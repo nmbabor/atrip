@@ -44,14 +44,15 @@
                         * description field is required
                     </p>
                 </div>
-                <div class="form-group">
-                    <label for="thumbnail">
-                        Thumbnail
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="file" class="form-control" name="thumbnail" required>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label for="thumbnail">
+                            Thumbnail
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="file" class="form-control" name="thumbnail" required>
+                    </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-4">
                         <label for="category">
