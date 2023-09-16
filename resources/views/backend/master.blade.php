@@ -59,10 +59,10 @@
     <div class="wrapper">
 
         <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
+        {{-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="Logo"
                 height="60" width="60">
-        </div>
+        </div> --}}
 
         <!-- Navbar -->
         @include('backend.layouts.navbar')
@@ -122,51 +122,34 @@
         <!-- /.content-wrapper -->
 
         @include('backend.layouts.footer')
-        <!-- Modal -->
-        <div class="modal fade" id="resourceDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content p-4">
-                    <!-- <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"> <i class="bi bi-trash3 text-danger"></i> Delete confirmation</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> -->
+        <div class="modal fade" id="resourceDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <h1 class="text-danger mt-4">
+                       <i class="fa fa-times-circle"></i>
+                    </h1>
 
-
-                    <div class="modal-body text-center">
-                        <span>
-                            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect x="4" y="4" width="48" height="48" rx="24"
-                                    fill="#FEE4E2" />
-                                <path
-                                    d="M28 24V28M28 32H28.01M38 28C38 33.5228 33.5228 38 28 38C22.4772 38 18 33.5228 18 28C18 22.4772 22.4772 18 28 18C33.5228 18 38 22.4772 38 28Z"
-                                    stroke="#D92D20" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <rect x="4" y="4" width="48" height="48" rx="24"
-                                    stroke="#FEF3F2" stroke-width="8" />
-                            </svg>
-                        </span>
-
-                        <div class="delete-info">
-                            <h3 class="delete-title"> Delete</h3>
-                            <p class="delete-text">Are you sure you want to delete it? This action cannot be undone.
-                            </p>
-                        </div>
-
-                        <div class="d-flex gap-2 w-100">
-                            <button type="button" class="modal-cancel-btn flex-fill"
-                                data-bs-dismiss="modal">Close</button>
-                            {!! Form::open(['method' => 'delete', 'class' => 'flex-fill']) !!}
-                            <button type="submit" class="modal-confirm-btn w-100"> <i class="bi bi-trash3"></i>
-                                Confirm</button>
-                            {!! Form::close() !!}
-                        </div>
+                    <div class="delete-info">
+                        <h3 class="delete-title"> Delete</h3>
+                        <p class="delete-text">Are you sure you want to delete it? This action cannot be undone.
+                        </p>
                     </div>
-
+                    <div class="row justify-content-around border-top pt-3">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <a href="#" class="btn btn-success normal-delete-button" style="display: none"> <i class="fa fa-trash"></i> Confirm</a>
+                        {!! Form::open(['method' => 'delete', 'class' => 'resource-delete-form']) !!}
+                        <button type="submit" class="btn btn-success "> <i class="fa fa-trash"></i>
+                            Confirm</button>
+                        {!! Form::close() !!}
+                    </div>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
 
     </div>
     <!-- ./wrapper -->
@@ -231,6 +214,15 @@
                 backdrop: 'static'
             });
             $('#resourceDelete form').attr('action', delete_url);
+        }
+        function confirmDelete(delete_url) {
+            "use strict"
+            jQuery('#resourceDelete').modal('show', {
+                backdrop: 'static'
+            });
+            $('#resourceDelete form').hide();
+            $('#resourceDelete .normal-delete-button').show();
+            $('#resourceDelete .normal-delete-button').attr('href', delete_url);
         }
     </script>
 

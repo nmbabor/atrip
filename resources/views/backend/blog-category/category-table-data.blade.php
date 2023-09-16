@@ -22,15 +22,12 @@
                     @endif
                 </td>
                 <td>
-                    <div class="btn-group">
-                        <a class="btn" href="{{ route('backend.admin.edit.blog.category', $data->id) }}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a class="btn" href="{{ route('backend.admin.delete.blog.category', $data->id) }}"
-                            onclick="return confirm('Are you sure ?')">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </div>
+                    <a class="btn btn-xs btn-info" href="{{ route('backend.admin.edit.blog.category', $data->id) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <button class="btn btn-xs btn-danger" onclick="confirmDelete('{{ route('backend.admin.delete.blog.category', $data->id) }}')">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 </td>
             </tr>
         @endforeach

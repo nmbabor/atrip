@@ -29,13 +29,14 @@ class CategoryController extends Controller
         if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required',
+                'slug' => 'required',
                 'description' => 'nullable|string|max:255',
                 'status' => 'nullable',
             ]);
 
             $newCategory = new BlogCategory();
             $newCategory->title = $request->title;
-            $newCategory->slug = Str::slug($request->title) . '-' . uniqid();
+            $newCategory->slug = Str::slug($request->slug);
             $newCategory->description = $request->description;
             $newCategory->status = $request->status ? 1 : 0;
             $newCategory->save();
@@ -53,14 +54,13 @@ class CategoryController extends Controller
         if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required',
+                'slug' => 'required',
                 'description' => 'nullable|string|max:255',
                 'status' => 'nullable',
             ]);
 
             $category->title = $request->title;
-            if ($request->title != $category->title) {
-                $category->slug = Str::slug($request->title) . '-' . uniqid();
-            }
+            $category->slug = Str::slug($request->slug);
             $category->description = $request->description;
             $category->status = $request->status ? 1 : 0;
             $category->save();

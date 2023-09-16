@@ -37,11 +37,10 @@
                                 <i class="fas fa-edit mr-1"></i>
                                 Edit
                             </a>
-                            <a class="dropdown-item" href="{{ route('backend.admin.delete.blog', $data->id) }}"
-                                onclick="return confirm('Are you sure ?')">
+                            <button class="dropdown-item" onclick="confirmDelete('{{ route('backend.admin.delete.blog', $data->id) }}')" type="button">
                                 <i class="fas fa-trash-alt mr-1"></i>
                                 Delete
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </td>

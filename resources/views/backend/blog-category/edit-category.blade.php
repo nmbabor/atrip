@@ -9,13 +9,22 @@
             enctype="multipart/form-data">
             @csrf
             <div class="card-body">
-                <div class="form-group">
-                    <label for="title">
-                        Category Title
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" class="form-control" placeholder="Enter title" name="title"
-                        value="{{ $category->title }}" required>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="form-group">
+                            <label for="title" class="form-label">Category Title <span class="text-danger">*</span> : </label>
+                            <input type="text" class="form-control" required autocomplete="off" name="title"
+                                placeholder="Enter title" value="{{ $category->title }}">
+                        </div>
+                    </div>
+            
+                    <div class="col-6 mb-3">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Slug<span class="text-danger">*</span> : </label>
+                            <input type="text" class="form-control" required autocomplete="off" name="slug"
+                                placeholder="Enter slug" value="{{ $category->slug }}">
+                        </div>
+                    </div>
                 </div>
                 {{-- description --}}
                 <div class="form-group">
@@ -46,3 +55,18 @@
         </form>
     </div>
 @endsection
+@push('script')
+ <script>
+    function getSlugFromString(str) {
+    return str
+        .toLowerCase()
+        .replace(/[^a-z0-9-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    $("[name='title']").keyup(function () {
+    $("[name='slug']").val(getSlugFromString(this.value));
+    });
+ </script>
+@endpush

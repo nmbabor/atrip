@@ -85,7 +85,7 @@
                             </p>
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <p class="mb-0 pull-right">
+                            <p class="mb-0 pull-right top-social-links">
                             Social Links: 
                             @if(readconfig('facebook_link') != null)
                             <a title="Facebook" href="{{readconfig('facebook_link')}}" target="_blank"><i class="icon-facebook2"></i></a>
@@ -122,7 +122,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo" class="mt-0 mb-0"><a href="{{url('/')}}"> 
+					<h1 id="fh5co-logo"><a href="{{url('/')}}"> 
                         <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{readconfig('site_name')}}" style="max-width:100px">
                      </a></h1>
 					<!-- START #fh5co-menu-wrap -->

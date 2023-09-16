@@ -25,16 +25,16 @@
                 </td>
                 <td>
                     <div class="action-wrapper">
-                        <a href="#" target="_blank">
+                        <a class="btn btn-xs btn-success" href="{{url('pages',$data->slug)}}" target="_blank">
                             <i class="fas fa-link"></i>
                         </a>
-                        <a href="javascript:void(0)" onclick="load_edit_form('{{ $data->id }}')">
+                        <a class="btn btn-xs btn-info" href="javascript:void(0)" onclick="load_edit_form('{{ $data->id }}')">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="{{ route('backend.admin.delete.page', $data->id) }}"
-                            onclick="return confirm('Are you sure ?')">
+                        <button class="btn btn-xs btn-danger" type="button"
+                            onclick="confirmDelete('{{ route('backend.admin.delete.page', $data->id) }}')">
                             <i class="fas fa-trash-alt"></i>
-                        </a>
+                        </button>
                     </div>
                 </td>
             </tr>

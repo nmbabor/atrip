@@ -8,6 +8,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\PageBuilderController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RoleController;
@@ -133,6 +134,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
                 Route::get('delete/{id}', 'destroy')->name('backend.admin.permissions.delete');
             });
         });
+        Route::resource('menus','Backend\MenuController');
     });
 });
 
