@@ -32,7 +32,6 @@ class WebsiteSettingController extends Controller
 
     public function websiteContactsUpdate(Request $request)
     {
-        // <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.685961383561!2d90.41725367597397!3d23.82976368572367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c65cf31d3a39%3A0xf77cb33fece3e5d4!2skhilkhet%20Footover%20Brg%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1694480918597!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         foreach ($request->except('_token') as $key => $value) {
             if($key == 'google_map'){
                 // Your iframe HTML code

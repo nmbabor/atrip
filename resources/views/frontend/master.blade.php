@@ -60,6 +60,7 @@
 	<link rel="stylesheet" href="{{asset('frontend/css/cs-skin-border.css')}}">
 	
 	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
 
 
 	<!-- Modernizr JS -->
@@ -74,12 +75,56 @@
 	<body>
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
+            <section class="top-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <p class="mb-0"> 
+                                <b> <i class="icon-phone2"></i> </b> {{readconfig('contact_mobile')}}, 
+                                <b> <i class="icon-mail"></i> </b> {{readconfig('contact_email')}}
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <p class="mb-0 pull-right">
+                            Social Links: 
+                            @if(readconfig('facebook_link') != null)
+                            <a title="Facebook" href="{{readconfig('facebook_link')}}" target="_blank"><i class="icon-facebook2"></i></a>
+                            @endif
 
+                            @if(readconfig('twitter_link') != null)
+                            <a title="Twitter" href="{{readconfig('twitter_link')}}" target="_blank"><i class="icon-twitter2"></i></a>
+                            @endif
+                            
+                            @if(readconfig('linkedin_link') != null)
+                            <a title="Linkedin" href="{{readconfig('linkedin_link')}}" target="_blank"><i class="icon-linkedin2"></i></a>
+                            @endif
+                            @if(readconfig('youtube_link') != null)
+                            <a title="Youtube" href="{{readconfig('youtube_link')}}" target="_blank"><i class="icon-youtube"></i></a>
+                            @endif
+                            @if(readconfig('instagram_link') != null)
+                            <a title="Instagram" href="{{readconfig('instagram_link')}}" target="_blank"><i class="icon-instagram"></i></a>
+                            @endif
+                            
+                            @if(readconfig('pinterest_link') != null)
+                            <a title="Pinterest" href="{{readconfig('pinterest_link')}}" target="_blank"><i class="icon-pinterest"></i></a>
+                            @endif 
+
+                            @if(readconfig('tumblr_link') != null)
+                            <a title="Tumblr" href="{{readconfig('tumblr_link')}}" target="_blank"><i class="icon-tumblr2"></i></a>
+                            @endif
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
 		<header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+					<h1 id="fh5co-logo" class="mt-0 mb-0"><a href="{{url('/')}}"> 
+                        <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{readconfig('site_name')}}" style="max-width:100px">
+                     </a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -108,67 +153,67 @@
 		<footer>
 			<div id="footer">
 				<div class="container">
-					<div class="row row-bottom-padded-md">
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>About Travel</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12 fh5co-footer-link">
+							<h3>Address</h3>
+							<p> <b> <i class="icon-location-pin"></i> </b> {{readconfig('contact_address')}}</p>
+							<p> <b> <i class="icon-phone2"></i> </b> {{readconfig('contact_mobile')}}</p>
+							<p> <b> <i class="icon-mail"></i> </b> {{readconfig('contact_email')}}</p>
+							<p> <b> <i class="icon-info"></i> </b> {{readconfig('working_hour')}}</p>
 						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Top Flights Routes</h3>
+						
+						<div class="col-md-1 col-sm-1"></div>
+						<div class="col-md-3 col-sm-3 col-xs-12 fh5co-footer-link">
+							<h3>Quick Links</h3>
 							<ul>
-								<li><a href="#">Manila flights</a></li>
-								<li><a href="#">Dubai flights</a></li>
-								<li><a href="#">Bangkok flights</a></li>
-								<li><a href="#">Tokyo Flight</a></li>
-								<li><a href="#">New York Flights</a></li>
+								<li><a href="{{url('/pages/terms-condition')}}">Terms of condition</a></li>
+								<li><a href="{{url('/pages/privacy-policy')}}">Privacy Policy</a></li>
+								<li><a href="{{url('/pages/refund-policy')}}">Refund Policy</a></li>
+                                @if(Auth::check())
+								<li><a href="{{route('dashboard.redirect')}}">Dashboard</a></li>
+                                @else
+                                <li><a href="{{route('login')}}">Login</a></li>
+								<li><a href="{{route('signup')}}">Signup</a></li>
+                                @endif
 							</ul>
 						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Top Hotels</h3>
-							<ul>
-								<li><a href="#">Boracay Hotel</a></li>
-								<li><a href="#">Dubai Hotel</a></li>
-								<li><a href="#">Singapore Hotel</a></li>
-								<li><a href="#">Manila Hotel</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Interest</h3>
-							<ul>
-								<li><a href="#">Beaches</a></li>
-								<li><a href="#">Family Travel</a></li>
-								<li><a href="#">Budget Travel</a></li>
-								<li><a href="#">Food &amp; Drink</a></li>
-								<li><a href="#">Honeymoon and Romance</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Best Places</h3>
-							<ul>
-								<li><a href="#">Boracay Beach</a></li>
-								<li><a href="#">Dubai</a></li>
-								<li><a href="#">Singapore</a></li>
-								<li><a href="#">Hongkong</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-							<h3>Affordable</h3>
-							<ul>
-								<li><a href="#">Food &amp; Drink</a></li>
-								<li><a href="#">Fare Flights</a></li>
-							</ul>
+						<div class="col-md-4 col-sm-4 col-xs-12 fh5co-footer-link">
+							<h3>Connect with us</h3>
+                            <p>Stay in the loop with our latest travel updates, deals, and adventures by following us on social media.
+                                 Join our online community and embark on a journey of discovery with us!</p>
+							<p class="fh5co-social-icons">
+                                @if(readconfig('facebook_link') != null)
+								<a title="Facebook" href="{{readconfig('facebook_link')}}" target="_blank"><i class="icon-facebook2"></i></a>
+                                @endif
+
+                                @if(readconfig('twitter_link') != null)
+								<a title="Twitter" href="{{readconfig('twitter_link')}}" target="_blank"><i class="icon-twitter2"></i></a>
+                                @endif
+                                
+                                @if(readconfig('linkedin_link') != null)
+								<a title="Linkedin" href="{{readconfig('linkedin_link')}}" target="_blank"><i class="icon-linkedin2"></i></a>
+                                @endif
+                                @if(readconfig('youtube_link') != null)
+								<a title="Youtube" href="{{readconfig('youtube_link')}}" target="_blank"><i class="icon-youtube"></i></a>
+                                @endif
+                                @if(readconfig('instagram_link') != null)
+								<a title="Instagram" href="{{readconfig('instagram_link')}}" target="_blank"><i class="icon-instagram"></i></a>
+                                @endif
+                                
+                                @if(readconfig('pinterest_link') != null)
+								<a title="Pinterest" href="{{readconfig('pinterest_link')}}" target="_blank"><i class="icon-pinterest"></i></a>
+                                @endif 
+
+                                @if(readconfig('tumblr_link') != null)
+								<a title="Tumblr" href="{{readconfig('tumblr_link')}}" target="_blank"><i class="icon-tumblr2"></i></a>
+                                @endif
+                                
+							</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
-							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="#"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-dribbble2"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
-							</p>
-							<p>Copyright 2016 Free Html5 <a href="#">Module</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a> / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
+							<p>Copyright &copy; {{date('Y')}} <a href="{{readconfig('site_url')}}"> {{readconfig('site_name')}} </a>. All rights reserved  </p>
 						</div>
 					</div>
 				</div>

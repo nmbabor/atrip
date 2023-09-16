@@ -68,6 +68,11 @@
                                     value="{{ readConfig('site_name') }}" placeholder="Enter Site Title">
                             </div>
                             <div class="form-group">
+                                <label>Short Description</label>
+                                <textarea class="form-control" rows="2" name="about_us" cols="50"
+                                    placeholder="Enter About us">{{ readConfig('about_us') }}</textarea>
+                            </div>
+                            <div class="form-group">
                                 <label>Meta Description</label>
                                 <textarea class="form-control" rows="2" name="meta_description" cols="50"
                                     placeholder="Enter Meta Description">{{ readConfig('meta_description') }}</textarea>
@@ -107,20 +112,16 @@
                                     value="{{ readConfig('contact_address') }}">
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input placeholder="Phone" class="form-control" name="contact_phone" type="tel"
-                                    value="{{ readConfig('contact_phone') }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Fax</label>
-                                <input placeholder="Fax" class="form-control" name="contact_fax" type="tel"
-                                    value="{{ readConfig('contact_fax') }}">
-                            </div>
-                            <div class="form-group">
                                 <label>Mobile</label>
                                 <input placeholder="Mobile" class="form-control" name="contact_mobile" type="tel"
                                     value="{{ readConfig('contact_mobile') }}">
                             </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input placeholder="Phone" class="form-control" name="contact_phone" type="tel"
+                                    value="{{ readConfig('contact_phone') }}">
+                            </div>
+                            
                             <div class="form-group">
                                 <label>Email</label>
                                 <input placeholder="Email" class="form-control" name="contact_email" type="email"
@@ -216,24 +217,6 @@
                                 </label>
                                 <input placeholder="Tumblr" class="form-control" name="tumblr_link" type="url"
                                     value="{{ readConfig('tumblr_link') }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>
-                                    <i class="fab fa-snapchat"></i>
-                                    &nbsp; Snapchat
-                                </label>
-                                <input placeholder="Snapchat" class="form-control" name="snapchat_link" type="url"
-                                    value="{{ readConfig('snapchat_link') }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>
-                                    <i class="fab fa-whatsapp"></i>
-                                    &nbsp; Whatsapp
-                                </label>
-                                <input placeholder="Whatsapp" class="form-control" name="whatsapp_link" type="url"
-                                    value="{{ readConfig('whatsapp_link') }}">
                             </div>
                         </div>
                     </form>
