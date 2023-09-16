@@ -9,7 +9,14 @@
                     <fieldset>
                         <form action="{{ route('menus.store') }}" method="post">
                             @csrf
-                            <div class="form-group row">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="1" checked> Custom URL </label>
+                                    <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="2"> Page URL </label>
+                                    <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="3"> Blog Category </label>
+                                </div>
+                            </div>
+                            <div class="form-group custom-url">
                                 <label class="col-md-12"> Menu Name <span class="text-danger">*</span> : </label>
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" placeholder="Name" required name="name">
@@ -18,20 +25,32 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group custom-url">
                                 <label class="col-md-12"> Menu URL <span class="text-danger">*</span> : </label>
                                 <div class="input-group">
-                                    <div>
-                                        {!! Form::select('type',['1'=>'Custom URL','2'=>'Page URL','3'=>'Blog Category'],'1',['class'=>'form-control menu-type','required']) !!}
-                                    </div>
+                                    <button class="btn btn-light" type="button">
+                                        {{url('/')}}/
+                                    </button>
 
-                                    <input type="text" class="form-control custom-url" name="url">
+                                    <input type="text" class="form-control" name="url">
 
-                                    {!! Form::select('page_id',$pages,'',['class'=>'form-control page-url','style'=>'display:none']) !!}
-                                    {!! Form::select('category_id',$blogCategory,'',['class'=>'form-control blog-category','style'=>'display:none']) !!}
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group page-url" style="display:none">
+                                <label class="col-md-12"> Page <span class="text-danger">*</span> : </label>
+
+                                <div class="col-md-12">
+                                    {!! Form::select('type',$pages,'',['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group blog-category" style="display:none">
+                                <label class="col-md-12"> Blog Category <span class="text-danger">*</span> : </label>
+
+                                <div class="col-md-12">
+                                    {!! Form::select('category_id',$blogCategory,'',['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn bg-gradient-primary">
                                         Submit
@@ -45,21 +64,30 @@
                 </div>
 
                 <div class="col-md-7 table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th colspan="2">Name</th>
                                 <th>URL</th>
+                                <th width="5%">Status</th>
                                 <th class="text-center" width="20%">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($allData as $data)
-                                <tr>
-                                    <td>{{ snakeToTitle($data->name) }}</td>
+                                <tr class="bg-light">
+                                    <td colspan="2">{{ snakeToTitle($data->name) }}</td>
                                     <td>{{ $data->url }}</td>
                                     <td>
+                                        @if($data->status==1)
+                                        <span class="badge badge-success" title="Active"> <i class="fa fa-check"></i> </span>
+                                        @else
+                                        <span class="badge badge-danger" title="Inactive"> <i class="fa fa-times"></i> </span>
+                                        @endif
+                                    </td>
+                                    <td>
                                         <div class="text-center">
+                                            <button class="btn btn-xs btn-secondary" title="Add New Sub Menu"  data-toggle="modal" data-target="#addSubMenu-{{ $data->id }}"><i class="fa fa-plus-circle"></i></button>
                                             <!-- Button trigger modal -->
                                             <button title="Edit Menu" type="button" class="btn btn-info btn-xs"
                                                 data-toggle="modal" data-target="#editMenu-{{ $data->id }}">
@@ -72,6 +100,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </div>
+                                        @include('backend.settings.menu.addSubMenu')
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="editMenu-{{ $data->id }}" tabindex="-1"
@@ -82,7 +111,7 @@
                                                     <div class="modal-header">
                                                         <h5 class="modal-title fs-5" id="exampleModalLabel">
                                                             <i class="fas fa-pencil-alt"></i>
-                                                            Edit permission
+                                                            Edit Menu
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -92,7 +121,15 @@
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label class="control-label">Name:</label>
-                                                            {!! Form::text('name', $data->name, ['class' => 'form-control', 'placeholder' => 'permission Name']) !!}
+                                                            {!! Form::text('name', $data->name, ['class' => 'form-control', 'placeholder' => 'Name','required']) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Menu URL:</label>
+                                                            {!! Form::text('url', $data->url, ['class' => 'form-control', 'placeholder' => 'Url', 'required']) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Status:</label>
+                                                            {!! Form::select('status',[1=>'Active', 0 =>'Inactive'], $data->status, ['class' => 'form-control','required']) !!}
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -110,6 +147,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                               @include('backend.settings.menu.subMenuList')
                             @endforeach
                         </tbody>
                     </table>

@@ -63,3 +63,7 @@ body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-head
 .general-settings .nav-tabs .nav-link{
     border: 1px solid #dfdfdf;
 }
+
+.table tr.sub-menu-row td{
+    padding: 5px; 
+}

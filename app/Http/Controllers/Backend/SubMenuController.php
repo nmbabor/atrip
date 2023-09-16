@@ -2,25 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Menu;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\Page;
+use App\Models\SubMenu;
+use Illuminate\Http\Request;
 
-class MenuController extends Controller
+class SubMenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $allData = Menu::get();
-        $blogCategory = BlogCategory::where('status',1)->pluck('title','id');
-        $pages = Page::where('status',1)->pluck('title','id');
-        return view('backend.settings.menu.index', compact('allData','blogCategory','pages'));
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -28,7 +17,8 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required'
+            'name'=>'required',
+            'menu_id'=>'required',
         ]);
 
         try{
@@ -41,11 +31,12 @@ class MenuController extends Controller
                 $category = BlogCategory::findOrFail($request->category_id);
                 $url = 'blog/'.$category->slug;
             }
-            Menu::create([
+            SubMenu::create([
                 'name'=>$request->name,
+                'menu_id'=>$request->menu_id,
                 'url' => $url,
             ]);
-            return back()->with('success', 'Menu created successfully');
+            return back()->with('success', 'Sub Menu created successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -63,11 +54,11 @@ class MenuController extends Controller
         ]);
 
         try {
-            $data = Menu::findOrFail($id);
+            $data = SubMenu::findOrFail($id);
             $input = $request->except(['_token', '_method']);
             
             $data->update($input);
-            return back()->with('success', 'Menu updated successfully');
+            return back()->with('success', 'Sub Menu updated successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -79,9 +70,9 @@ class MenuController extends Controller
     public function destroy($id)
     {
         try {
-            $data = Menu::findOrFail($id);
+            $data = SubMenu::findOrFail($id);
             $data->delete();
-            return back()->with('success', 'Menu deleted successfully');
+            return back()->with('success', 'Sub Menu deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

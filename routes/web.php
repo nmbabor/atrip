@@ -135,6 +135,10 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
             });
         });
         Route::resource('menus','Backend\MenuController');
+        
+        Route::post('sub-menus','Backend\SubMenuController@store')->name('sub-menus.store');
+        Route::match(['put','patch'],'sub-menus/{id}','Backend\SubMenuController@update')->name('sub-menus.update');
+        Route::delete('sub-menus/{id}','Backend\SubMenuController@destroy')->name('sub-menus.destroy');
     });
 });
 
