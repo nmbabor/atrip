@@ -33,6 +33,7 @@ class BlogController extends Controller
         if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required|string',
+                'slug' => 'required|unique:blogs',
                 'short_description' => 'required|string|max:255',
                 'long_description' => 'required',
                 'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -42,11 +43,11 @@ class BlogController extends Controller
                 'meta_description' => 'nullable',
             ]);
 
-            $slug = Str::slug($request->title);
+            $slug = Str::slug($request->slug);
             $findSlugMatch = Blog::where('slug', $slug)->first();
 
             if ($findSlugMatch) {
-                return back()->with('error', 'Title already exists')->withInput();
+                return back()->with('error', 'Slug already exists')->withInput();
             }
 
             $newBlog = new Blog();

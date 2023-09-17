@@ -77,3 +77,10 @@ body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-head
 .cursor-move{
     cursor: move;
 }
+
+.post_upload{width:100%;height: 210px;position: relative;padding: 2px;border: 1px dashed #333;overflow: hidden;}
+.post_upload img{width: 100%;height:100% ;cursor: pointer;opacity: 1;transition: all .5s;}
+/*.post_upload img:hover{opacity:1;}*/
+.post_upload::before{content: '\f030';font-family: "Font Awesome 5 Free"; width:100%;height:100%;position: absolute;top:0px; left:0px;text-align: center;line-height:200px;font-size: 40px;color: #fcfffc;
+    background: rgba(0,0,0,.4);opacity: 0;cursor: pointer;transition: all .5s;}
+.post_upload:hover::before{opacity: 1;}

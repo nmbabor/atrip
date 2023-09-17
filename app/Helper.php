@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Menu;
 use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Support\Str;
@@ -111,4 +112,9 @@ if (!function_exists('nullImg')) {
     {
         return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
     }
+}
+
+function menus(){
+    $menus = Menu::whereStatus(1)->with('subMenus')->orderBy('serial_num')->get();
+    return $menus;
 }

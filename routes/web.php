@@ -87,6 +87,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     // blogs
     Route::prefix('blogs')->group(function () {
         // blog category
+        Route::resource('categories','Backend\BlogCategoryController');
         Route::prefix('category')->group(function () {
             Route::get('/', [CategoryController::class, 'blogIndex'])->name('backend.admin.blog.categories');
             Route::get('fetch-data', [CategoryController::class, 'fetchBlogCategoryData'])->name('backend.admin.blog.categories.data');

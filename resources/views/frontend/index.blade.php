@@ -247,12 +247,10 @@
                         </div>
                         <div class="desc2 animate-box">
                             <div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-                                <p>HandCrafted by <a href="http://frehtml5.co/" target="_blank"
-                                        class="fh5co-site-name">FreeHTML5.co</a></p>
-                                <h2>Exclusive Limited Time Offer</h2>
-                                <h3>Fly to Hong Kong via Los Angeles, USA</h3>
-                                <span class="price">$599</span>
-                                <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+                                <h2>Welcome to {{readconfig('site_name')}}</h2>
+                                <h3>Find Flights, Hotels & Tour Packages</h3>
+                                {{-- <span class="price">Go</span> --}}
+                                <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p>
                             </div>
                         </div>
                     </div>
@@ -266,9 +264,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                    <h3>Hot Tours</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                        the blind texts.</p>
+                    <h3>Our Tour Packages</h3>
+                    <p>Plan your dream gateway and choose from uncountable tour packages at {{readconfig('site_name')}}. Book our holiday packages for the best deals on any international trip.</p>
                 </div>
             </div>
             <div class="row">
@@ -318,8 +315,44 @@
             </div>
         </div>
     </div>
+    <div id="fh5co-blog-section" class="fh5co-section-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                    <h3>Latest Blog Updates</h3>
+                    <p>Stay in the know with our most recent blog posts. Explore thought-provoking articles, insightful tips, and the latest trends in our field. Don't miss out on the latest insights from our blog.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row row-bottom-padded-md">
+                @foreach($blogs as $blog)
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="fh5co-blog animate-box">
+                        <a href="#"><img class="img-responsive" src="{{ imageRecover($blog->thumbnail) }}"
+                                alt=""></a>
+                        <div class="blog-text">
+                            <div class="prod-title">
+                                <h3><a href="#">{{$blog->title}}</a></h3>
+                                <span class="posted_by"> {{date('jS M, Y',strtotime($blog->created_at))}} </span>
+                                <span class="comment"><a href=""><i class="icon-folder"></i> {{$blog->category->title??""}} </a></span>
+                                <p><a href="#">Learn More...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                @endforeach
+            </div>
 
-    <div id="fh5co-features">
+            <div class="col-md-12 text-center animate-box">
+                <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Post <i
+                            class="icon-arrow-right22"></i></a></p>
+            </div>
+
+        </div>
+    </div>
+    <div id="fh5co-features" style="display: none">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 animate-box">
@@ -508,79 +541,9 @@
         </div>
     </div>
 
-    <div id="fh5co-blog-section" class="fh5co-section-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                    <h3>Recent From Blog</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis
-                        accusamus asperiores sint consequuntur debitis.</p>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row row-bottom-padded-md">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{ asset('frontend/images/place-1.jpg') }}"
-                                alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">30% Discount to Travel All Around the World</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                    there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{ asset('frontend/images/place-2.jpg') }}"
-                                alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">Planning for Vacation</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                    there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{ asset('frontend/images/place-3.jpg') }}"
-                                alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">Visit Tokyo Japan</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                    there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-md-block"></div>
-            </div>
-
-            <div class="col-md-12 text-center animate-box">
-                <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Post <i
-                            class="icon-arrow-right22"></i></a></p>
-            </div>
-
-        </div>
-    </div>
+    
     <!-- fh5co-blog-section -->
-    <div id="fh5co-testimonial" style="background-image:url({{ asset('frontend/images/img_bg_1.jpg') }});">
+    <div id="fh5co-testimonial" style="background-image:url({{ asset('frontend/images/img_bg_1.jpg') }});display:none">
         <div class="container">
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">

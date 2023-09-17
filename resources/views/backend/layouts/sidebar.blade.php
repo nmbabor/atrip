@@ -36,31 +36,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-chevron-circle-right nav-icon"></i>
-                            <p>
-                                <span class="text-lightblue">Blog Category</span>
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('backend.admin.create.blog.category') }}"
-                                    class="nav-link {{ $route === 'backend.admin.create.blog.category' ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('backend.admin.blog.categories') }}"
-                                    class="nav-link {{ $route === 'backend.admin.blog.categories' ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Category List</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-chevron-circle-right nav-icon"></i>
@@ -74,7 +50,7 @@
                                 <a href="{{ route('backend.admin.create.blog') }}"
                                     class="nav-link {{ $route === 'backend.admin.create.blog' ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create New Blog</p>
+                                    <p>Add New</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -85,6 +61,13 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('backend.admin.blog.categories') }}"
+                            class="nav-link {{ $route === 'backend.admin.blog.categories' ? 'active' : '' }}">
+                            <i class="fas fa-chevron-circle-right nav-icon"></i>
+                            <p>Blog Category</p>
+                        </a>
                     </li>
                 </ul>
             </li>
