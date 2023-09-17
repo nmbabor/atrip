@@ -63,8 +63,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('backend.admin.blog.categories') }}"
-                            class="nav-link {{ $route === 'backend.admin.blog.categories' ? 'active' : '' }}">
+                        <a href="{{ route('categories.index') }}"
+                            class="nav-link {{ $route === 'categories.index' ? 'active' : '' }}">
                             <i class="fas fa-chevron-circle-right nav-icon"></i>
                             <p>Blog Category</p>
                         </a>

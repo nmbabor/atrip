@@ -88,13 +88,6 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::prefix('blogs')->group(function () {
         // blog category
         Route::resource('categories','Backend\BlogCategoryController');
-        Route::prefix('category')->group(function () {
-            Route::get('/', [CategoryController::class, 'blogIndex'])->name('backend.admin.blog.categories');
-            Route::get('fetch-data', [CategoryController::class, 'fetchBlogCategoryData'])->name('backend.admin.blog.categories.data');
-            Route::match(['get', 'post'], 'create', [CategoryController::class, 'createBlogCategory'])->name('backend.admin.create.blog.category');
-            Route::match(['get', 'post'], 'edit/{id}', [CategoryController::class, 'editBlogCategory'])->name('backend.admin.edit.blog.category');
-            Route::get('delete/{id}', [CategoryController::class, 'deleteBlogCategory'])->name('backend.admin.delete.blog.category');
-        });
 
         Route::get('/', [BlogController::class, 'index'])->name('backend.admin.blogs');
         Route::get('fetch-data', [BlogController::class, 'fetchBlogData'])->name('backend.admin.blog.data');

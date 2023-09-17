@@ -17,7 +17,7 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="form-group">
                             <label for="title"> Blog Title <span class="text-danger">*</span> : </label>
                             <input type="text" class="form-control" placeholder="Enter title" name="title"
@@ -49,7 +49,7 @@
                         </div>
                         
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="category">
                                 Category

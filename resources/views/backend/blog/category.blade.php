@@ -7,26 +7,30 @@
             <div class="row">
                 <div class="col-md-5 border-right">
                     <fieldset>
-                        <form action="{{ route('menus.store') }}" method="post">
+                        <form action="{{ route('categories.store') }}" method="post" id="addNewData">
                             @csrf
-                            <div class="form-group custom-url">
-                                <label class="col-md-12"> Menu Name <span class="text-danger">*</span> : </label>
+                            <div class="form-group">
+                                <label class="col-md-12"> Name <span class="text-danger">*</span> : </label>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Name" name="name">
-                                    @error('name')
+                                    <input type="text" class="form-control" placeholder="Name" name="title">
+                                    @error('title')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group custom-url">
-                                <label class="col-md-12"> Menu URL <span class="text-danger">*</span> : </label>
-                                <div class="input-group">
-                                    <button class="btn btn-light" type="button">
-                                        {{url('/')}}/
-                                    </button>
-
-                                    <input type="text" class="form-control" name="url">
-
+                            <div class="form-group">
+                                <label class="col-md-12"> Slug <span class="text-danger">*</span> : </label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Slug" name="slug">
+                                    @error('slug')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12"> Description : </label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" placeholder="Description" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -43,24 +47,20 @@
                 </div>
 
                 <div class="col-md-7 table-responsive">
-                    <table class="table table-bordered table-hover" style="display: none">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th colspan="2">Name</th>
-                                <th>URL</th>
+                                <th>Slug</th>
                                 <th width="5%">Status</th>
                                 <th class="text-center" width="20%">Actions</th>
                             </tr>
                         </thead>
-                        <tbody  class="row_position">
-                            <tr class="bg-light">
-                                <td>
-                                </td>
-                            </tr>
+                        <tbody>
                             @foreach ($allData as $data)
-                                <tr class="bg-light" id="{{$data->id}}">
-                                    <td colspan="2" >{{ $data->name }}</td>
-                                    <td>{{ $data->url }}</td>
+                                <tr>
+                                    <td colspan="2" >{{ $data->title }}</td>
+                                    <td>{{ $data->slug }}</td>
                                     <td>
                                         @if($data->status==1)
                                         <span class="badge badge-success" title="Active"> <i class="fa fa-check"></i> </span>
@@ -71,28 +71,28 @@
                                     <td>
                                         <div class="text-center">
                                             <!-- Button trigger modal -->
-                                            <button title="Edit Menu" type="button" class="btn btn-info btn-xs"
-                                                data-toggle="modal" data-target="#editMenu-{{ $data->id }}">
+                                            <button title="Edit Category" type="button" class="btn btn-info btn-xs"
+                                                data-toggle="modal" data-target="#editCategory-{{ $data->id }}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
-                                            <a class="btn btn-danger btn-xs" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Menu"
+                                            <a class="btn btn-danger btn-xs" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Category"
                                                                 href="javascript:void(0)"
-                                                                onclick='resourceDelete("{{ route('menus.destroy', $data->id) }}")'>
+                                                                onclick='resourceDelete("{{ route('categories.destroy', $data->id) }}")'>
                                                                 <span class="delete-icon">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </div>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="editMenu-{{ $data->id }}" tabindex="-1"
+                                        <div class="modal fade" id="editCategory-{{ $data->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
-                                                {!! Form::open(['method' => 'put', 'route' => ['menus.update', $data->id]]) !!}
+                                                {!! Form::open(['method' => 'put', 'route' => ['categories.update', $data->id]]) !!}
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title fs-5" id="exampleModalLabel">
                                                             <i class="fas fa-pencil-alt"></i>
-                                                            Edit Menu
+                                                            Edit Category
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -102,11 +102,17 @@
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label class="control-label">Name:</label>
-                                                            {!! Form::text('name', $data->name, ['class' => 'form-control', 'placeholder' => 'Name','required']) !!}
+                                                            {!! Form::text('title', $data->title, ['class' => 'form-control', 'placeholder' => 'Name','required']) !!}
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label">Menu URL:</label>
-                                                            {!! Form::text('url', $data->url, ['class' => 'form-control', 'placeholder' => 'Url', 'required']) !!}
+                                                            <label class="control-label">Slug:</label>
+                                                            {!! Form::text('slug', $data->slug, ['class' => 'form-control', 'placeholder' => 'Slug', 'required']) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-12"> Description : </label>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control" placeholder="Description" name="description">{{$data->description}}</textarea>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Status:</label>
@@ -136,4 +142,19 @@
         </div>
     </div>
 @endsection
+@push('script')
+ <script>
+    function getSlugFromString(str) {
+    return str
+        .toLowerCase()
+        .replace(/[^a-z0-9-]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    $("#addNewData [name='title']").keyup(function () {
+    $("#addNewData [name='slug']").val(getSlugFromString(this.value));
+    });
+ </script>
+@endpush
 
