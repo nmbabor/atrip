@@ -40,7 +40,7 @@
                                 <label class="col-md-12"> Page <span class="text-danger">*</span> : </label>
 
                                 <div class="col-md-12">
-                                    {!! Form::select('type',$pages,'',['class'=>'form-control']) !!}
+                                    {!! Form::select('page_id',$pages,'',['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="form-group blog-category" style="display:none">
@@ -147,7 +147,7 @@
                                     @if(count($data->subMenus)>0)
                                     <div class="col-md-12 mt-1">
                                         <ul class="list-group">
-                                            @foreach($data->subMenus as $subMenu)
+                                            @foreach($data->subMenus->sortBy('serial_num') as $subMenu)
                                             <li class="list-group-item p-2">
                                                 <div class="row">
                                                     <div class="col-sm-4">
@@ -196,12 +196,16 @@
                                                                             <input name="menu_id" value="{{$data->id}}" type="hidden">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label">Name:</label>
+                                                                            <label class="control-label">Sub Menu Name:</label>
                                                                             {!! Form::text('name', $subMenu->name, ['class' => 'form-control', 'placeholder' => 'Name','required']) !!}
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label">Menu URL:</label>
+                                                                            <label class="control-label">Sub Menu URL:</label>
                                                                             {!! Form::text('url', $subMenu->url, ['class' => 'form-control', 'placeholder' => 'Url', 'required']) !!}
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Serial No:</label>
+                                                                            <input type="number" min="1" value="{{$subMenu->serial_num}}" name="serial_num" class="form-control" placeholder="Serial Number" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label">Status:</label>

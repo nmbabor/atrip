@@ -36,10 +36,10 @@ class MenuController extends Controller
             ];
             if($request->type==1){
                 if($request->name == ''){
-                    return redirect()->with('error','Name can not be null.');
+                    return redirect()->back()->with('error','Name can not be null.');
                 }
                 if($request->url == ''){
-                    return redirect()->with('error','Menu URL can not be null.');
+                    return redirect()->back()->with('error','Menu URL can not be null.');
                 }
             }elseif($request->type==2){
                 $page = Page::findOrFail($request->page_id);

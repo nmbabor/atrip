@@ -73,8 +73,7 @@
             <!-- Brand Logo -->
             <a href="{{ route('frontend.home') }}" class="brand-link">
                 <img src="{{ assetImage(readconfig('site_logo')) }}" alt="Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ readConfig('site_name') }}</span>
+                    class="brand-image float-none">
             </a>
 
             <!-- Sidebar -->

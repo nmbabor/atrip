@@ -114,6 +114,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
+                        <a href="{{ route('menus.index') }}"
+                            class="nav-link {{ $route === 'menus.index' ? 'active' : '' }}">
+                            <i class="fas fa-folder nav-icon"></i>
+                            <p>Menu Settings</p>
+                        </a>
+                    </li>
+                     <li class="nav-item">
                         <a href="{{ route('backend.admin.settings.website.general') }}?active-tab=website-info"
                             class="nav-link {{ $route === 'backend.admin.settings.website.general' ? 'active' : '' }}">
                             <i class="fas fa-circle nav-icon"></i>

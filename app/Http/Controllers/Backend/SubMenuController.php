@@ -16,26 +16,33 @@ class SubMenuController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'menu_id'=>'required',
-        ]);
-
+        
         try{
-            $url = $request->url;
-
-            if($request->type==2){
+            $input = [
+                'name' => $request->name, 
+                'url' => $request->url,
+                'serial_num' => $request->serial_num,
+                'menu_id'=>$request->menu_id,
+            ];
+            if($request->type==1){
+                if($request->name == ''){
+                    return redirect()->back()->with('error','Name can not be null.');
+                }
+                if($request->url == ''){
+                    return redirect()->back()->with('error','Menu URL can not be null.');
+                }
+            }elseif($request->type==2){
                 $page = Page::findOrFail($request->page_id);
-                $url = 'pages/'.$page->slug;
+                $input['name'] = $page->title;
+                $input['url'] = 'pages/'.$page->slug;
+    
             }else if($request->type==3){
                 $category = BlogCategory::findOrFail($request->category_id);
-                $url = 'blog/'.$category->slug;
+                $input['name'] = $category->title;
+                $input['url'] = 'blogs/'.$category->slug;
             }
-            SubMenu::create([
-                'name'=>$request->name,
-                'menu_id'=>$request->menu_id,
-                'url' => $url,
-            ]);
+            
+            SubMenu::create($input);
             return back()->with('success', 'Sub Menu created successfully');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

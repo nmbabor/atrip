@@ -20,22 +20,47 @@
                     <input name="menu_id" value="{{$data->id}}" type="hidden">
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Name:</label>
-                    {!! Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Name','required']) !!}
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12"> Menu URL <span class="text-danger">*</span> : </label>
-                    <div class="input-group">
-                        <div>
-                            {!! Form::select('type',['1'=>'Custom URL','2'=>'Page URL','3'=>'Blog Category'],'1',['class'=>'form-control menu-type','required']) !!}
-                        </div>
-
-                        <input type="text" class="form-control custom-url" name="url">
-
-                        {!! Form::select('page_id',$pages,'',['class'=>'form-control page-url','style'=>'display:none']) !!}
-                        {!! Form::select('category_id',$blogCategory,'',['class'=>'form-control blog-category','style'=>'display:none']) !!}
+                    <div class="col-sm-12">
+                        <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="1" checked> Custom URL </label>
+                        <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="2"> Page URL </label>
+                        <label class="mr-3">  <input class="menu-type" type="radio" name="type" value="3"> Blog Category </label>
                     </div>
                 </div>
+                <div class="form-group custom-url">
+                    <label class="col-md-12"> Menu Name <span class="text-danger">*</span> : </label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Name" name="name">
+                        @error('name')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group custom-url">
+                    <label class="col-md-12">Sub Menu URL <span class="text-danger">*</span> : </label>
+                    <div class="input-group">
+                        <button class="btn btn-light" type="button">
+                            {{url('/')}}/
+                        </button>
+
+                        <input type="text" class="form-control" name="url">
+
+                    </div>
+                </div>
+                <div class="form-group page-url" style="display:none">
+                    <label class="col-md-12"> Page <span class="text-danger">*</span> : </label>
+
+                    <div class="col-md-12">
+                        {!! Form::select('page_id',$pages,'',['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <div class="form-group blog-category" style="display:none">
+                    <label class="col-md-12"> Blog Category <span class="text-danger">*</span> : </label>
+
+                    <div class="col-md-12">
+                        {!! Form::select('category_id',$blogCategory,'',['class'=>'form-control']) !!}
+                    </div>
+                </div>
+                <input type="hidden" min="1" value="{{count($data->subMenus)+1}}" name="serial_num">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary"
