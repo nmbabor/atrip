@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('url');
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('serial_num');
             $table->timestamps();
         });
     }

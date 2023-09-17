@@ -135,6 +135,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
             });
         });
         Route::resource('menus','Backend\MenuController');
+        Route::put('menu-serial-update','Backend\MenuController@serialUpdate')->name('menu-serial-update');
         
         Route::post('sub-menus','Backend\SubMenuController@store')->name('sub-menus.store');
         Route::match(['put','patch'],'sub-menus/{id}','Backend\SubMenuController@update')->name('sub-menus.update');

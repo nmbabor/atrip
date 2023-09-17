@@ -67,3 +67,13 @@ body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-head
 .table tr.sub-menu-row td{
     padding: 5px; 
 }
+.table .row_position>tr>td{
+   border:none;
+}
+.drop-zone{
+    background-color: #ddd;
+
+}
+.cursor-move{
+    cursor: move;
+}

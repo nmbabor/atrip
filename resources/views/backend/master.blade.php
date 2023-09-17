@@ -198,6 +198,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-14PMPDZXRQ"></script>
     <script>
+        // Get the CSRF token from the meta tag
+        var csrfToken = "{{ csrf_token() }}";
+        // Set up default AJAX settings
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': csrfToken // Set the CSRF token as a default header
+            }
+        });
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
