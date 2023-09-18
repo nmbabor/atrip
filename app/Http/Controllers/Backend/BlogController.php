@@ -9,11 +9,50 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ImageHandlerController;
+use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $allData = Blog::with('category')->latest()->get();
+    
+            return DataTables::of($allData)
+                ->addIndexColumn()
+                ->addColumn('DT_RowIndex','')
+                ->addColumn('category_name', function ($data) {
+                    return $data->category->title ?? '';
+                })
+                ->editColumn('status', function ($data) {
+                    if($data->status == 1){
+                        return "<span class='badge bg-success'>Active</span>";
+                    }else{
+                        return "<span class='badge bg-danger'>inactive</span>";
+                    }
+                })
+                ->addColumn('created', function ($data) {
+                    return date('d M, Y', strtotime($data->created_at));
+                })
+                ->addColumn(
+                    'action',
+                    '<div class="action-wrapper">
+                    <a class="btn btn-sm bg-gradient-primary"
+                        href="{{ route(\'backend.admin.edit.blog\', $id) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-sm bg-gradient-danger"
+                        href="{{ route(\'backend.admin.delete.blog\', $id) }}"
+                        onclick="confirmDelete(\'{{ route(\'backend.admin.delete.blog\', $id) }}\')">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                    
+                </div>'
+                )
+                ->rawColumns(['status', 'created', 'action'])
+                ->toJson();
+        }
+        
         return view('backend.blog.index');
     }
 

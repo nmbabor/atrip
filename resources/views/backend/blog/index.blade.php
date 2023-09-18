@@ -10,31 +10,65 @@
 
 @section('content')
     <div class="card">
-        <div class="card-body table-responsive p-0" id="table_data">
-
+        <div class="card-body table-responsive p-0">
+            <table id="datatables" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th data-orderable="false">#</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th data-orderable="false">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 @endsection
 
 @push('script')
-    <script>
-        $(document).ready(function() {
-            fetch_data(1);
-        });
+    <script type="text/javascript">
+        $(function() {
+            let table = $('#datatables').DataTable({
+                processing: true,
+                serverSide: true,
+                ordering: true,
+                order: [
+                    [1, 'asc']
+                ],
+                ajax: {
+                    url: "{{ route('backend.admin.blogs') }}"
+                },
 
-        $(document).on('click', '.pagination a', function(event) {
-            event.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            fetch_data(page);
-        });
-
-        function fetch_data(page) {
-            $.ajax({
-                url: "{{ route('backend.admin.blog.data') }}?page=" + page,
-                success(response) {
-                    $('#table_data').html(response);
-                }
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                    }
+                    , {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'category_name',
+                        name: 'blog_categories.title',
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'created',
+                        name: 'created_at',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
             });
-        }
+        });
     </script>
 @endpush
