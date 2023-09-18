@@ -16,7 +16,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $allData = Blog::with('category')->latest()->get();
+            $allData = Blog::with('category')->latest();
     
             return DataTables::of($allData)
                 ->addIndexColumn()
@@ -37,12 +37,12 @@ class BlogController extends Controller
                 ->addColumn(
                     'action',
                     '<div class="action-wrapper">
-                    <a class="btn btn-sm bg-gradient-primary"
+                    <a class="btn btn-xs bg-gradient-primary"
                         href="{{ route(\'backend.admin.edit.blog\', $id) }}">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="btn btn-sm bg-gradient-danger"
-                        href="{{ route(\'backend.admin.delete.blog\', $id) }}"
+                    <a class="btn btn-xs bg-gradient-danger"
+                        href="#"
                         onclick="confirmDelete(\'{{ route(\'backend.admin.delete.blog\', $id) }}\')">
                         <i class="fas fa-trash-alt"></i>
                     </a>
@@ -73,7 +73,6 @@ class BlogController extends Controller
             $request->validate([
                 'title' => 'required|string',
                 'slug' => 'required|unique:blogs',
-                'short_description' => 'required|string|max:255',
                 'long_description' => 'required',
                 'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 'status' => 'nullable',
@@ -92,7 +91,6 @@ class BlogController extends Controller
             $newBlog = new Blog();
             $newBlog->title = $request->title;
             $newBlog->slug = $slug;
-            $newBlog->short_description = $request->short_description;
             $newBlog->description = $request->long_description;
             $newBlog->status = $request->status ? 1 : 0;
             $newBlog->blog_category_id = $request->category_id;
@@ -124,7 +122,6 @@ class BlogController extends Controller
         if ($request->isMethod('post')) {
             $request->validate([
                 'title' => 'required|string',
-                'short_description' => 'required|string|max:255',
                 'long_description' => 'required',
                 'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'status' => 'nullable',
@@ -142,7 +139,6 @@ class BlogController extends Controller
 
             $blogDetails->title = $request->title;
             $blogDetails->slug = $slug;
-            $blogDetails->short_description = $request->short_description;
             $blogDetails->description = $request->long_description;
             $blogDetails->status = $request->status ? 1 : 0;
             $blogDetails->blog_category_id = $request->category_id;

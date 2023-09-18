@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogCategoryController extends Controller
 {
@@ -26,7 +27,7 @@ class BlogCategoryController extends Controller
         ]);
         try{
             $input = $request->except('_token');
-            $input['slug'] = \Str::slug($request->slug);
+            $input['slug'] = Str::slug($request->slug);
             BlogCategory::create($input);
             return back()->with('success', 'Category created successfully');
         } catch (\Exception $e) {
@@ -45,7 +46,7 @@ class BlogCategoryController extends Controller
         try {
             $data = BlogCategory::findOrFail($id);
             $input = $request->except(['_token', '_method']);
-            $input['slug'] = \Str::slug($request->slug);
+            $input['slug'] = Str::slug($request->slug);
             
             $data->update($input);
             return back()->with('success', 'Data updated successfully');

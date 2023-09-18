@@ -39,12 +39,12 @@
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="short-description">
-                                Short Description
+                            <label for="meta_description">
+                                Meta Description
                                 <span class="text-danger">*</span> :
                             </label>
-                            <textarea class="form-control" placeholder="Enter short description for meta description" name="short_description" required cols="30"
-                                rows="4">{{ $blogDetails->short_description }}</textarea>
+                            <textarea class="form-control" placeholder="Enter meta description " name="meta_description" required cols="30"
+                                rows="4">{{ $blogDetails->meta_description }}</textarea>
                         </div>
                         
                     </div>

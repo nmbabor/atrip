@@ -328,15 +328,15 @@
             <div class="row row-bottom-padded-md">
                 @foreach($blogs as $blog)
                 <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{ imageRecover($blog->thumbnail) }}"
-                                alt=""></a>
+                    <div class="fh5co-blog animate-box blog-box">
+                        <a href="{{route('frontend.blog.show',$blog->slug)}}"><img class="img-responsive blog-img" src="{{ imageRecover($blog->thumbnail) }}"
+                                alt="{{$blog->title}}"></a>
                         <div class="blog-text">
                             <div class="prod-title">
-                                <h3><a href="#">{{$blog->title}}</a></h3>
+                                <h3><a href="{{route('frontend.blog.show',$blog->slug)}}">{{$blog->title}}</a></h3>
                                 <span class="posted_by"> {{date('jS M, Y',strtotime($blog->created_at))}} </span>
-                                <span class="comment"><a href=""><i class="icon-folder"></i> {{$blog->category->title??""}} </a></span>
-                                <p><a href="#">Learn More...</a></p>
+                                <span class="comment"><a href="{{route('frontend.blogs.category',$blog->category->slug)}}"><i class="icon-folder"></i> {{$blog->category->title??""}} </a></span>
+                                <p><a href="{{route('frontend.blog.show',$blog->slug)}}">Learn More...</a></p>
                             </div>
                         </div>
                     </div>
@@ -346,7 +346,7 @@
             </div>
 
             <div class="col-md-12 text-center animate-box">
-                <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Post <i
+                <p><a class="btn btn-primary btn-outline btn-lg" href="{{route('frontend.blogs')}}">See All Blogs <i
                             class="icon-arrow-right22"></i></a></p>
             </div>
 

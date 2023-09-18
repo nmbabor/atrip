@@ -30,6 +30,10 @@ use App\Http\Controllers\Backend\WebsiteSettingController;
 
 // homepage
 Route::get('/','Frontend\HomeController@index')->name('frontend.home');
+Route::get('/blogs','Frontend\HomeController@blogs')->name('frontend.blogs');
+Route::get('/blogs/{category}','Frontend\HomeController@blogCategory')->name('frontend.blogs.category');
+Route::get('/blog/{slug}','Frontend\HomeController@singleBlog')->name('frontend.blog.show');
+Route::get('/pages/{slug}','Frontend\HomeController@singlePage')->name('frontend.page');
 
 //authentication
 Route::match(['get', 'post'], 'login', [AuthController::class, 'login'])->name('login');
@@ -63,6 +67,7 @@ Route::prefix('admin')->middleware(['admin'])->group(function () {
     Route::get('profile', [DashboardController::class, 'profile'])->name('backend.admin.profile');
 
     // page builder
+    Route::resource('page-builder','Backend\PageController');
     Route::prefix('pages')->group(function () {
         Route::get('/', [PageBuilderController::class, 'index'])->name('backend.admin.pages');
         Route::post('create', [PageBuilderController::class, 'createPage'])->name('backend.admin.page.create');

@@ -28,9 +28,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12"> Description : </label>
+                                <label class="col-md-12">Meta Description : </label>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" placeholder="Description" name="description"></textarea>
+                                    <textarea class="form-control" placeholder="Meta Description" name="description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Meta Keywords : </label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" placeholder="Meta Keywords" name="keywords"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -109,10 +115,12 @@
                                                             {!! Form::text('slug', $data->slug, ['class' => 'form-control', 'placeholder' => 'Slug', 'required']) !!}
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-md-12"> Description : </label>
-                                                            <div class="col-md-12">
-                                                                <textarea class="form-control" placeholder="Description" name="description">{{$data->description}}</textarea>
-                                                            </div>
+                                                            <label class="control-label"> Meta Description : </label>
+                                                            <textarea class="form-control" placeholder="Meta Description" name="description">{{$data->description}}</textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Meta Keywords : </label>
+                                                            <textarea class="form-control" placeholder="Meta Keywords" name="keywords">{{$data->keywords}}</textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Status:</label>

@@ -9,34 +9,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title> @yield('title') | {{ readConfig('site_name') }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
-
-  <!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+	<meta name="description" content="@yield('meta_description',readConfig('meta_description'))" />
+	<meta name="keywords" content="@yield('meta_keywords',readConfig('meta_keywords'))" />
+	<meta name="author" content="{{ readConfig('site_name') }}" />
+	<meta property="og:title" content="@yield('title', readConfig('site_name'))"/>
+	<meta property="og:image" content="@yield('og_image',assetImage(readconfig('site_logo')))"/>
+	<meta property="og:url" content="{{ request()->fullUrl() }}"/>
+	<meta property="og:site_name" content="{{ readConfig('site_name') }}"/>
+	<meta property="og:description" content="@yield('meta_description',readConfig('meta_description'))"/>
+	<meta name="twitter:title" content="@yield('title', readConfig('site_name'))" />
+	<meta name="twitter:image" content="@yield('og_image',assetImage(readconfig('site_logo')))" />
+	<meta name="twitter:url" content="{{ request()->fullUrl() }}" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="{{ assetImage(readconfig('favicon_icon')) }}" type="image/svg+xml">

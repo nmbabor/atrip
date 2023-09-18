@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-body table-responsive p-0">
+        <div class="card-body table-responsive">
             <table id="datatables" class="table table-hover">
                 <thead>
                     <tr>

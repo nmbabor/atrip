@@ -16,10 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content');
-            $table->string('thumbnail')->nullable();
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->text('meta_tags')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

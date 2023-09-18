@@ -11,6 +11,8 @@
 .p-0{padding:0 !important}
 .pb-0{padding-bottom:0 !important}
 .pt-0{padding-top:0 !important}
+.pt-5{padding-top:50px !important}
+.pl-2{padding-left:20px !important}
 
 .top-social-links a{
     margin: 0 3px;
@@ -18,4 +20,33 @@
 }
 .top-social-links a:hover{
     color: #F78536;
+}
+.blog-box .blog-img{
+    width: auto !important;
+    height: 320px;
+    margin: 0 auto;
+}
+.fh5co-blog .blog-text{padding: 15px; height: 250px;}
+.blog-image img{width: 100%; height: auto;}
+.blog-title{    
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+.page-title{    
+    margin-top: 20px;
+    font-size: 25px;
+    color: #000;
+    font-weight: bold;
+}
+.blog-tag{
+    margin-bottom: 30px;
+    color: #000;
+}
+.blog-description p{
+    font-size: 17px;
+    color: #000 !important;
+    text-align: justify;
 }
