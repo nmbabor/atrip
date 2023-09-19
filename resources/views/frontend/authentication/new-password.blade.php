@@ -6,12 +6,13 @@
     <form action="{{ route('new.password') }}" method="post" class="authentication-form px-lg-5"
         id="resetPasswordForm needs-validation" novalidate>
         @csrf
-        <div class="authentication-form-header">
+        <div class="authentication-form-header text-center">
             <a href="{{ route('frontend.home') }}" class="logo">
-                <img src="{{ asset('assets/images/logo/logo.png') }}" width="200px" alt="brand-logo">
+                <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{ readconfig('site_name') }}" width="200px"
+                    style="margin:0 auto;">
             </a>
-            <h3 class="form-title">Reset Password</h3>
-            <p class="form-des">Please enter your new password.</p>
+            <h3 class="form-title">Sign in</h3>
+            <p class="form-des">Welcome back! Sign in to access your account.</p>
         </div>
         <div class="authentication-form-content">
             <div class="row g-4">

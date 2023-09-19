@@ -18,8 +18,8 @@ class StartUpSeeder extends Seeder
 
         $user = User::create([
             'name' => 'Mr Admin',
-            'email' => 'asd@mail.com',
-            'password' => bcrypt('asd@mail.com'),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
             'type' => 'Admin',
             'username' => uniqid()
         ]);

@@ -75,4 +75,5 @@ background-color: dark
 }',
   'google_map' => 'No iframe found.',
   'about_us' => 'Atrip is the country\'s first and leading online travel aggregator. We dreamt of making travel easier for people of all ages. And that is what we have done since our inception.',
+  'sub_title' => 'Find Flights, Hotels & Tour Packages',
 );

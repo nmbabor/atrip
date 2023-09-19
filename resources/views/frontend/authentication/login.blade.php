@@ -3,11 +3,13 @@
 @section('title', 'Login')
 
 @section('content')
-    <form action="{{ route('login') }}" method="post" class="authentication-form px-lg-5 needs-validation" novalidate>
+    <form action="{{ route('login') }}" method="post" class="authentication-form px-lg-5 forgot-form needs-validation"
+        novalidate>
         @csrf
-        <div class="authentication-form-header">
+        <div class="authentication-form-header text-center">
             <a href="{{ route('frontend.home') }}" class="logo">
-                <img src="{{ asset('assets/images/logo/logo.png') }}" width="200px" alt="brand-logo">
+                <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{ readconfig('site_name') }}" width="200px"
+                    style="margin:0 auto;">
             </a>
             <h3 class="form-title">Sign in</h3>
             <p class="form-des">Welcome back! Sign in to access your account.</p>
@@ -15,7 +17,7 @@
         <div class="authentication-form-content">
             <div class="row g-4">
 
-                <div class="col-sm-6 col-lg-12 col-xl-6">
+                <div class="col-sm-12 col-lg-12 col-xl-12">
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email"
@@ -26,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-lg-12 col-xl-6">
+                <div class="col-sm-12 col-lg-12 col-xl-12">
                     <div class="form-group">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Enter password"
@@ -40,11 +42,13 @@
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M0.75 9C0.75 9 3.75 3 9 3C14.25 3 17.25 9 17.25 9C17.25 9 14.25 15 9 15C3.75 15 0.75 9 0.75 9Z"
-                                        stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
                                     </path>
                                     <path
                                         d="M9 11.25C10.2426 11.25 11.25 10.2426 11.25 9C11.25 7.75736 10.2426 6.75 9 6.75C7.75736 6.75 6.75 7.75736 6.75 9C6.75 10.2426 7.75736 11.25 9 11.25Z"
-                                        stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
                                     </path>
                                 </svg>
                             </span>
@@ -75,7 +79,8 @@
                     <div class="single-row mb-2">
                         <div class="rememberbox d-flex justify-content-between">
                             <div class="customcheck ">
-                                <input type="checkbox" id="rememberMe" class="customcheck-box" name="remember_me" hidden>
+                                <input type="checkbox" id="rememberMe" class="customcheck-box" name="remember_me"
+                                    hidden>
                                 <label for="rememberMe" class="customcheck-label">Remember me</label>
                             </div>
                             <a href="{{ route('forget.password') }}" class="forget">Forgot password</a>
@@ -94,13 +99,13 @@
                             </div> --}}
                 </div>
 
-                <div class="col-sm-6 col-lg-12 col-xl-6">
+                <div class="col-sm-12 col-lg-12 col-xl-12">
                     <div class="form-group">
                         <button type="submit" class="create-account-btn w-100">Sign In</button>
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-lg-12 col-xl-6">
+                {{-- <div class="col-sm-6 col-lg-12 col-xl-6">
                     <div class="form-group">
                         <a href="{{ route('auth.google') }}" class="google-btn w-100">
                             <span class="icon">
@@ -134,11 +139,11 @@
                             <span class="text">Sign in with Google</span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
-        <div class="authentication-form-footer">
+        {{-- <div class="authentication-form-footer">
             <p>Don’t have an account? <a href="{{ route('signup') }}">Sign up </a></p>
-        </div>
+        </div> --}}
     </form>
 @endsection

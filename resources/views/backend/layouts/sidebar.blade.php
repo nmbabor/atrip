@@ -78,7 +78,7 @@
                     <p>Page Builder</p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('backend.admin.users') }}"
                     class="nav-link {{ $route === 'backend.admin.users' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-users"></i>
@@ -86,7 +86,7 @@
                         User Management
                     </p>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-cog nav-icon"></i>
@@ -110,7 +110,7 @@
                             <p>General Settings</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-chevron-circle-right nav-icon"></i>
                             <p>
@@ -134,7 +134,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     
                 </ul>
             </li>

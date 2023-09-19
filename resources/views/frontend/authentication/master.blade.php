@@ -25,9 +25,13 @@
     <!-- AUTHENTICATION-START (LOGIN) -->
     <section class="authentications">
         <div class="left-content">
-            <figure class="">
-                <img src="{{ asset('assets/images/authentication/register.svg') }}" alt="register image ">
-            </figure>
+            <div class="text-center">
+                <h1> Welcome to <b>{{readConfig('site_name')}}</b> </h1>
+                <h4>{{readConfig('sub_title')}}</h4>
+                <figure class="">
+                    <img class="img-responsive" src="{{ asset('assets/images/airplane.png') }}" alt="Travel">
+                </figure>
+            </div>
         </div>
         <div class="right-content">
             @yield('content')

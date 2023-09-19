@@ -68,9 +68,9 @@
                                     value="{{ readConfig('site_name') }}" placeholder="Enter Site Title">
                             </div>
                             <div class="form-group">
-                                <label>Short Description</label>
-                                <textarea class="form-control" rows="2" name="about_us" cols="50"
-                                    placeholder="Enter About us">{{ readConfig('about_us') }}</textarea>
+                                <label>Sub Title</label>
+                                <input class="form-control" name="sub_title" type="text"
+                                    value="{{ readConfig('sub_title') }}" placeholder="Enter Sub Title">
                             </div>
                             <div class="form-group">
                                 <label>Meta Description</label>
