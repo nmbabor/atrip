@@ -152,7 +152,7 @@
 								<li><a href="{{route('dashboard.redirect')}}">Dashboard</a></li>
                                 @else
                                 <li><a href="{{route('login')}}">Login</a></li>
-								<li><a href="{{route('signup')}}">Signup</a></li>
+								{{-- <li><a href="{{route('signup')}}">Signup</a></li> --}}
                                 @endif
 							</ul>
 						</div>
