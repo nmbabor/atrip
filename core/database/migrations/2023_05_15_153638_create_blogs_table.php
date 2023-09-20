@@ -20,8 +20,8 @@ return new class extends Migration
             $table->longText('description');
             $table->string('thumbnail')->nullable();
             $table->foreignIdFor(BlogCategory::class)->constrained();
-            $table->string('meta_tags')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->text('meta_tags')->nullable();
+            $table->text('meta_description')->nullable();
             $table->integer('author_id');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

@@ -12,6 +12,11 @@
                     <i class="fas fa-desktop"></i>
                     &nbsp;Website Info
                 </a>
+                <a class="nav-link {{ @$_GET['active-tab'] == 'style-settings' ? 'active' : '' }}" id="vert-tabs-4"
+                    data-toggle="pill" href="#tabs-4" role="tab" aria-controls="tabs-4" aria-selected="false">
+                    <i class="fas fa-swatchbook"></i>
+                    &nbsp;Logo &amp; Icon
+                </a>
                 <a class="nav-link {{ @$_GET['active-tab'] == 'contacts' ? 'active' : '' }}" id="vert-tabs-2"
                     data-toggle="pill" href="#tabs-2" role="tab" aria-controls="tabs-2" aria-selected="false">
                     <i class="fas fa-address-book"></i>
@@ -22,11 +27,7 @@
                     <i class="fas fa-share-alt"></i>
                     &nbsp;Social Links
                 </a>
-                <a class="nav-link {{ @$_GET['active-tab'] == 'style-settings' ? 'active' : '' }}" id="vert-tabs-4"
-                    data-toggle="pill" href="#tabs-4" role="tab" aria-controls="tabs-4" aria-selected="false">
-                    <i class="fas fa-swatchbook"></i>
-                    &nbsp;Style Settings
-                </a>
+                
                 <a class="nav-link {{ @$_GET['active-tab'] == 'custom-css' ? 'active' : '' }}" id="vert-tabs-5"
                     data-toggle="pill" href="#tabs-5" role="tab" aria-controls="tabs-5" aria-selected="false">
                     <i class="fas fa-code"></i>
@@ -51,15 +52,11 @@
 
                     <form action="{{ route('backend.admin.settings.website.info.update') }}" method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-desktop"></i>
                                 &nbsp;&nbsp;Website Info
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -87,6 +84,12 @@
                                     value="{{ readConfig('site_url') }}" placeholder="Enter Site URL">
                             </div>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
+                        </div>
                     </form>
 
                 </div>
@@ -95,15 +98,11 @@
 
                     <form action="{{ route('backend.admin.settings.website.contacts.update') }}" method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-address-book"></i>
                                 &nbsp;&nbsp;Contacts
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -138,6 +137,12 @@
                                     name="google_map" type="text" value="{{ readConfig('google_map') }}">
                             </div>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
+                        </div>
                     </form>
 
                 </div>
@@ -145,15 +150,11 @@
                     id="tabs-3" role="tabpanel" aria-labelledby="vert-tabs-3">
                     <form action="{{ route('backend.admin.settings.website.social.link.update') }}" method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-share-alt"></i>
                                 &nbsp;&nbsp;Social Links
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
@@ -219,6 +220,12 @@
                                     value="{{ readConfig('tumblr_link') }}">
                             </div>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade {{ @$_GET['active-tab'] == 'style-settings' ? 'active show' : '' }}"
@@ -227,76 +234,75 @@
                     <form action="{{ route('backend.admin.settings.website.style.settings.update') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom">
                             <h5>
                                 <i class="fas fa-swatchbook"></i>
-                                &nbsp;&nbsp;Style Settings
+                                &nbsp;&nbsp;Logo &amp; Icon
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-6 my-2">
-                                <label>Site Logo</label>
-    
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="col-sm-12 box p-a-xs text-center">
-                                            <img src="{{ imageRecover(readconfig('site_logo')) }}"
-                                                class="img-fluid thumbnail-preview site-logo-placeholder">
-                                        </div>
-                                    </div>
+                            <div class="col-md-6 my-2">
+                                <label for="thumbnail"> Site Logo : </label>
+                                <div class="col-md-6">
+                                    <label class="post_upload" for="file" style="height: 100px">
+                                        @if(readconfig('site_logo')!=null)
+                                        <img id="image_load" src='{{imageRecover(readconfig('site_logo'))}}' class="img-responsive">
+                                        @else
+                                        <img id="image_load" src="{{asset('assets/images/photo.png')}}">
+                                        @endif
+                                    </label>
+                                        {{Form::file('site_logo',array('id'=>'file','style'=>'display:none','onchange'=>"photoLoad(this,'image_load')"))}}
                                 </div>
-                                <input class="form-control" accept="image/*" name="site_logo" type="file"
-                                    onchange="previewThumbnail(this)">
                                 <small>
                                     <i class="far fa-question-circle"></i>
                                     ( 260x60 px ) - Extensions: .png, .jpg, .jpeg, .gif, .svg
                                 </small>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="style_fav">Favicon</label>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="col-sm-12 box p-a-xs text-center">
-                                            <a target="_blank" href="{{ imageRecover(readconfig('favicon_icon')) }}">
-                                                <img src="{{ imageRecover(readconfig('favicon_icon')) }}"
-                                                    class="img-fluid thumbnail-preview site-logo-placeholder">
-                                            </a>
-                                        </div>
-                                    </div>
+                            <div class="col-md-6 my-2">
+                                <label for="thumbnail"> Favicon : </label>
+                                <div class="col-md-6">
+                                    <label class="post_upload" for="file2" style="height: 100px; width: 100px">
+                                        @if(readconfig('favicon_icon')!=null)
+                                        <img id="fav_image_load" src='{{imageRecover(readconfig('favicon_icon'))}}' class="img-responsive">
+                                        @else
+                                        <img id="fav_image_load" src="{{asset('assets/images/photo.png')}}">
+                                        @endif
+                                    </label>
+                                        {{Form::file('favicon_icon',array('id'=>'file2','style'=>'display:none','onchange'=>"photoLoad(this,'fav_image_load')"))}}
                                 </div>
-                                <input class="form-control" accept="image/*" name="favicon_icon" type="file"
-                                    onchange="previewThumbnail(this)">
                                 <small>
                                     <i class="far fa-question-circle"></i>
-                                    ( 32x32 px ) - Extensions: .png, .jpg, .jpeg, .gif, .svg
+                                    ( 50x50 px ) - Extensions: .png, .jpg, .jpeg, .gif, .svg
                                 </small>
                             </div>
                         </div>
+                            <button type="submit" class="btn bg-gradient-primary mb-2">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
                     </form>
                 </div>
                 <div class="tab-pane fade {{ @$_GET['active-tab'] == 'custom-css' ? 'active show' : '' }}" id="tabs-5"
                     role="tabpanel" aria-labelledby="vert-tabs-5">
                     <form action="{{ route('backend.admin.settings.website.custom.css.update') }}" method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-code"></i>
                                 &nbsp;&nbsp;Custom CSS
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="col-md-12 mt-2">
                             <div class="form-group">
                                 <textarea placeholder="" class="form-control" rows="17" name="custom_css" cols="50">{{ readConfig('custom_css') }}</textarea>
                             </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -305,15 +311,11 @@
                     <form action="{{ route('backend.admin.settings.website.notification.settings.update') }}"
                         method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-envelope"></i>
                                 &nbsp;&nbsp;Notification Settings
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="p-a-md col-md-12">
                             <div class="form-group">
@@ -358,21 +360,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade {{ @$_GET['active-tab'] == 'website-status' ? 'active show' : '' }}"
                     id="tabs-7" role="tabpanel" aria-labelledby="vert-tabs-7">
                     <form action="{{ route('backend.admin.settings.website.status.update') }}" method="post">
                         @csrf
-                        <div class="col-md-12 d-flex justify-content-between">
+                        <div class="col-md-12 d-flex justify-content-between border-bottom mb-2">
                             <h5>
                                 <i class="fas fa-power-off"></i>
                                 &nbsp;&nbsp;Website Status
                             </h5>
-                            <button type="submit" class="btn bg-gradient-primary">
-                                <i class="fas fa-save"></i>
-                                &nbsp;Save Changes
-                            </button>
                         </div>
                         <div class="p-a-md col-md-12">
                             <div class="form-group">
@@ -398,6 +402,12 @@
                                 <label>Close Message</label>
                                 <textarea placeholder="Close Message" class="form-control" rows="4" name="close_msg" cols="50">Website under maintenance&lt;h1&gt;Comming SOON&lt;/h1&gt;</textarea>
                             </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <button type="submit" class="btn bg-gradient-primary">
+                                <i class="fas fa-save"></i>
+                                &nbsp;Save Changes
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -98,9 +98,7 @@ class BlogController extends Controller
             $newBlog->meta_description = $request->meta_description;
 
             if ($request->hasFile("thumbnail")) {
-                $imageController = new ImageHandlerController();
-
-                $newBlog->thumbnail = $imageController->uploadBigImageAndGetPath($request->file("thumbnail"), "/public/media/blogs");
+                $newBlog->thumbnail = uploadBigImageAndGetPath($request->file("thumbnail"), "assets/images/blogs");
             }
 
             $newBlog->author_id = auth()->id();
@@ -146,11 +144,10 @@ class BlogController extends Controller
             $blogDetails->meta_description = $request->meta_description;
 
             if ($request->hasFile("thumbnail")) {
-                $imageController = new ImageHandlerController();
 
-                $imageController->secureUnlink($blogDetails->thumbnail);
+                secureUnlink($blogDetails->thumbnail);
 
-                $blogDetails->thumbnail = $imageController->uploadBigImageAndGetPath($request->file("thumbnail"), "/public/media/blogs");
+                $blogDetails->thumbnail = uploadBigImageAndGetPath($request->file("thumbnail"), "assets/images/blogs");
             }
 
             $blogDetails->save();
@@ -169,8 +166,7 @@ class BlogController extends Controller
 
             $blog->delete();
 
-            $imageController = new ImageHandlerController();
-            $imageController->secureUnlink($link);
+            secureUnlink($link);
 
             return back()->with('success', 'Blog deleted successfully');
         } catch (\Exception $e) {

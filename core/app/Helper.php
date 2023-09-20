@@ -133,8 +133,9 @@ function menus(){
 
 function uploader($file, $path, $width = null, $height = null)
 {
+    $path = ltrim($path, '/');
     $file_name = time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
-    $storingPath = storage_path() . "/app/public" . $path . "/" . $file_name;
+    $storingPath = storage_path() . "/app/public/" . $path . "/" . $file_name;
     if (!Storage::exists('public/' . $path)) {
         Storage::makeDirectory('public/' . $path);
     }
