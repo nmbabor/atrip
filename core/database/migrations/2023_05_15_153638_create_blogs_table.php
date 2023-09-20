@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('short_description');
+            $table->string('short_description')->nullable();
             $table->longText('description');
             $table->string('thumbnail')->nullable();
             $table->foreignIdFor(BlogCategory::class)->constrained();

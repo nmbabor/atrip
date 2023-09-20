@@ -9,7 +9,7 @@
         @yield('title') | {{ readConfig('site_name') }}
     </title>
     <!-- FAVICON ICON -->
-    <link rel="shortcut icon" href="{{ assetImage(readconfig('favicon_icon')) }}" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ imageRecover(readconfig('favicon_icon')) }}" type="image/svg+xml">
     <!-- BACK-TOP CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/back-top/backToTop.css') }}">
     <!-- BOOTSTRAP CSS (5.3) -->

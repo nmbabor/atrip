@@ -238,26 +238,25 @@
                             </button>
                         </div>
 
-                        <div class="col-12 my-2">
-                            <label>Site Logo</label>
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="col-sm-12 box p-a-xs text-center">
-                                        <img src="{{ imageRecover(readconfig('site_logo')) }}"
-                                            class="img-fluid thumbnail-preview site-logo-placeholder">
+                        <div class="form-group row">
+                            <div class="col-6 my-2">
+                                <label>Site Logo</label>
+    
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-12 box p-a-xs text-center">
+                                            <img src="{{ imageRecover(readconfig('site_logo')) }}"
+                                                class="img-fluid thumbnail-preview site-logo-placeholder">
+                                        </div>
                                     </div>
                                 </div>
+                                <input class="form-control" accept="image/*" name="site_logo" type="file"
+                                    onchange="previewThumbnail(this)">
+                                <small>
+                                    <i class="far fa-question-circle"></i>
+                                    ( 260x60 px ) - Extensions: .png, .jpg, .jpeg, .gif, .svg
+                                </small>
                             </div>
-                            <input class="form-control" accept="image/*" name="site_logo" type="file"
-                                onchange="previewThumbnail(this)">
-                            <small>
-                                <i class="far fa-question-circle"></i>
-                                ( 260x60 px ) - Extensions: .png, .jpg, .jpeg, .gif, .svg
-                            </small>
-                        </div>
-                        <hr>
-                        <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="style_fav">Favicon</label>
                                 <div class="row">

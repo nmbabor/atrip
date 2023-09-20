@@ -7,13 +7,13 @@
     <title>{{ readConfig('site_name') }}</title>
 
     <!-- FAVICON ICON -->
-    <link rel="shortcut icon" href="{{ assetImage(readconfig('favicon_icon')) }}" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ imageRecover(readconfig('favicon_icon')) }}" type="image/svg+xml">
 
     <!-- FAVICON ICON APPLE -->
-    <link href="{{ assetImage(readconfig('favicon_icon_apple')) }}" rel="apple-touch-icon">
-    <link href="{{ assetImage(readconfig('favicon_icon_apple')) }}" rel="apple-touch-icon" sizes="72x72">
-    <link href="{{ assetImage(readconfig('favicon_icon_apple')) }}" rel="apple-touch-icon" sizes="114x114">
-    <link href="{{ assetImage(readconfig('favicon_icon_apple')) }}" rel="apple-touch-icon" sizes="144x144">
+    <link href="{{ imageRecover(readconfig('favicon_icon')) }}" rel="apple-touch-icon">
+    <link href="{{ imageRecover(readconfig('favicon_icon')) }}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{{ imageRecover(readconfig('favicon_icon')) }}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{{ imageRecover(readconfig('favicon_icon')) }}" rel="apple-touch-icon" sizes="144x144">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -72,7 +72,7 @@
         <aside class="main-sidebar elevation-4 sidebar-light-primary">
             <!-- Brand Logo -->
             <a href="{{ route('frontend.home') }}" class="brand-link">
-                <img src="{{ assetImage(readconfig('site_logo')) }}" alt="Logo"
+                <img src="{{ imageRecover(readconfig('site_logo')) }}" alt="Logo"
                     class="brand-image float-none">
             </a>
 

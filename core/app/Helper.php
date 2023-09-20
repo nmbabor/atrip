@@ -12,11 +12,14 @@ if (!function_exists('imageRecover')) {
 
     function imageRecover($path)
     {
-        if ($path == null || !\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+        if ($path == null || !Storage::disk('public')->exists($path)) {
             return asset('assets/backend/dist/img/default-150x150.png');
         }
 
-        $storage_link = \Illuminate\Support\Facades\Storage::url($path);
+        $storage_link = Storage::url($path);
+        if(readConfig('core_folder') == 1){
+            $storage_link = 'core/public'.$storage_link;
+        }
 
         return asset($storage_link);
     }
@@ -26,11 +29,14 @@ if (!function_exists('imageRecoverNull')) {
 
     function imageRecoverNull($path)
     {
-        if ($path == null || !\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+        if ($path == null || !Storage::disk('public')->exists($path)) {
             return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
         }
 
-        $storage_link = \Illuminate\Support\Facades\Storage::url($path);
+        $storage_link = Storage::url($path);
+        if(readConfig('core_folder') == 1){
+            $storage_link = 'core/public'.$storage_link;
+        }
 
         return asset($storage_link);
     }
@@ -41,11 +47,14 @@ if (!function_exists('docRecover')) {
 
     function docRecover($path)
     {
-        if ($path == null || !\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+        if ($path == null || !Storage::disk('public')->exists($path)) {
             return null;
         }
 
-        $storage_link = \Illuminate\Support\Facades\Storage::url($path);
+        $storage_link = Storage::url($path);
+        if(readConfig('core_folder') == 1){
+            $storage_link = 'core/public'.$storage_link;
+        }
 
         return asset($storage_link);
     }
@@ -125,10 +134,9 @@ function menus(){
 function uploader($file, $path, $width = null, $height = null)
 {
     $file_name = time() . "_" . uniqid() . "_" . $file->getClientOriginalName();
-    $storingPath = storage_path() . "/app" . $path . "/" . $file_name;
-    if (!file_exists(storage_path() . "/app" . $path)) {
-        Storage::makeDirectory($path);
-        //mkdir(storage_path() . "/app" . $path, 0777, true);
+    $storingPath = storage_path() . "/app/public" . $path . "/" . $file_name;
+    if (!Storage::exists('public/' . $path)) {
+        Storage::makeDirectory('public/' . $path);
     }
 
     $img = Image::make($file->getRealPath());
@@ -140,7 +148,7 @@ function uploader($file, $path, $width = null, $height = null)
     $img->save($storingPath);
 
     // Remove Public from link
-    return substr($path . "/" . $file_name, 8);
+    return $path . "/" . $file_name;
 }
 
 function uploadToPublic($file, $path = "/assets/images")

@@ -13,16 +13,16 @@
 	<meta name="keywords" content="@yield('meta_keywords',readConfig('meta_keywords'))" />
 	<meta name="author" content="{{ readConfig('site_name') }}" />
 	<meta property="og:title" content="@yield('title', readConfig('site_name'))"/>
-	<meta property="og:image" content="@yield('og_image',assetImage(readconfig('site_logo')))"/>
+	<meta property="og:image" content="@yield('og_image',imageRecover(readconfig('site_logo')))"/>
 	<meta property="og:url" content="{{ request()->fullUrl() }}"/>
 	<meta property="og:site_name" content="{{ readConfig('site_name') }}"/>
 	<meta property="og:description" content="@yield('meta_description',readConfig('meta_description'))"/>
 	<meta name="twitter:title" content="@yield('title', readConfig('site_name'))" />
-	<meta name="twitter:image" content="@yield('og_image',assetImage(readconfig('site_logo')))" />
+	<meta name="twitter:image" content="@yield('og_image',imageRecover(readconfig('site_logo')))" />
 	<meta name="twitter:url" content="{{ request()->fullUrl() }}" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="{{ assetImage(readconfig('favicon_icon')) }}" type="image/svg+xml">
+    <link rel="shortcut icon" href="{{ imageRecover(readconfig('favicon_icon')) }}" type="image/svg+xml">
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	
@@ -106,7 +106,7 @@
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					<h1 id="fh5co-logo"><a href="{{url('/')}}"> 
-                        <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{readconfig('site_name')}}" style="max-width:100px">
+                        <img src="{{ imageRecover(readconfig('site_logo')) }}" alt="{{readconfig('site_name')}}" style="max-width:100px">
                      </a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">

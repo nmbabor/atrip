@@ -9,7 +9,7 @@ use DOMDocument;
 
 class WebsiteSettingController extends Controller
 {
-    public function websiteGeneral(Request $request)
+    public function websiteGeneral()
     {
         return view('backend.settings.website-settings.general');
     }

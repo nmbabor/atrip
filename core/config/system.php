@@ -3,9 +3,9 @@
   'close_msg' => 'Down for maintenance',
   'site_url' => 'http://localhost/atrip',
   'site_name' => 'A Trip',
-  'site_logo' => 'images/logo/1695130187_6509a24b5105c_logo.png',
+  'site_logo' => 'assets/images/logo/1695173225_650a4a699b246_logo.png',
   'app_name' => 'A Trip',
-  'favicon_icon' => '/assets/images/logo/1694845939_65054bf3106be_favicon.png',
+  'favicon_icon' => '/assets/images/logo/1695173723_650a4c5b81f0d_favicon.png',
   'favicon_icon_apple' => '/assets/images/logo/1694845939_65054bf32704b_favicon.png',
   'newsletter_subscribe' => NULL,
   'notify_email_address' => 'weruz@mailinator.com',
@@ -43,4 +43,5 @@
   'google_map' => 'No iframe found.',
   'about_us' => 'Atrip is the country\'s first and leading online travel aggregator. We dreamt of making travel easier for people of all ages. And that is what we have done since our inception.',
   'sub_title' => 'Find Flights, Hotels & Tour Packages',
+  'core_folder' => 1,
 );

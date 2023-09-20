@@ -7,7 +7,7 @@
         @csrf
         <div class="authentication-form-header text-center">
             <a href="{{ route('frontend.home') }}" class="logo">
-                <img src="{{ assetImage(readconfig('site_logo')) }}" alt="{{ readconfig('site_name') }}" width="200px"
+                <img src="{{ imageRecover(readconfig('site_logo')) }}" alt="{{ readconfig('site_name') }}" width="200px"
                     style="margin:0 auto;">
             </a>
             <h3 class="form-title">Sign in</h3>
