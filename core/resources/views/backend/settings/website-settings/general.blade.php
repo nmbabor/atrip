@@ -38,11 +38,11 @@
                     <i class="fas fa-envelope"></i>
                     &nbsp;Notification Settings
                 </a> --}}
-                <a class="nav-link {{ @$_GET['active-tab'] == 'website-status' ? 'active' : '' }}" id="vert-tabs-7"
+                {{-- <a class="nav-link {{ @$_GET['active-tab'] == 'website-status' ? 'active' : '' }}" id="vert-tabs-7"
                     data-toggle="pill" href="#tabs-7" role="tab" aria-controls="tabs-7" aria-selected="false">
                     <i class="fas fa-power-off"></i>
                     &nbsp;Website Status
-                </a>
+                </a> --}}
             </div>
         </div>
         <div class="col-8 col-sm-10">

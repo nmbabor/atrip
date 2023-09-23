@@ -45,6 +45,9 @@
             </div>
             @endforeach
             <div class="clearfix visible-md-block"></div>
+            <div class="col-md-12 mt-3 border-top pt-2">
+                {{$blogs->links()}}
+            </div>
         </div>
 
     </div>

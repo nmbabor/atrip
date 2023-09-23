@@ -50,3 +50,20 @@
     color: #000 !important;
     text-align: justify;
 }
+.nav-tabs .active a, .btn.btn-primary{
+    background: #00aeef !important;
+}
+a{
+    color: #00aeef;
+}
+.tabulation input[type="text"]{
+    color: #00aeef !important;
+}
+.btn.btn-outline{
+    border: 2px solid #00aeef !important;
+    color: #fff;
+}
+.btn.btn-outline:hover, .btn.btn-outline:focus, .btn.btn-outline:active{
+    background: #026e97 !important;
+    border: 2px solid #026e97 !important;
+}
